@@ -1,0 +1,98 @@
+[
+	{
+		"id": "LY 6090",
+		"from": "Tel-Aviv",
+		"to": "Barcelona",
+		"departure": "2019-04-10 21:40",
+		"arrival": "2019-04-11 1:20",
+		"by": "El Al"
+	},
+	{
+		"id": "EZY 2084",
+		"from": "Tel-Aviv",
+		"to": "London",
+		"departure": "2019-04-10 08:30",
+		"arrival": "2019-04-10 12:40",
+		"by": "EasyJet"
+	},
+	{
+		"id": "AZ 807",
+		"from": "Tel-Aviv",
+		"to": "Rome",
+		"departure": "2019-04-10 12:20",
+		"arrival": "2019-04-10 16:00",
+		"by": "Alitalia"
+	},
+	{
+		"id": "LX 253",
+		"from": "Tel-Aviv",
+		"to": "Zurich",
+		"departure": "2019-04-10 09:10",
+		"arrival": "2019-04-10 11:50",
+		"by": "Swiss INTL"
+	},
+	{
+		"id": "SN 3290",
+		"from": "Tel-Aviv",
+		"to": "Brussels",
+		"departure": "2019-04-10 22:00",
+		"arrival": "2019-04-11 00:20",
+		"by": "Brussels Airlines"
+	},
+	{
+		"id": "LY 8851",
+		"from": "Tel-Aviv",
+		"to": "Zurich",
+		"departure": "2019-04-10 13:40",
+		"arrival": "2019-04-10 17:20",
+		"by": "El Al"
+	},
+	{
+		"id": "OS 858",
+		"from": "Tel-Aviv",
+		"to": "Vienna",
+		"departure": "2019-04-11 05:40",
+		"arrival": "2019-04-11 10:10",
+		"by": "Austrian Airlines"
+	},
+	{
+		"id": "SN 7174",
+		"from": "Tel-Aviv",
+		"to": "Frankfurt",
+		"departure": "2019-04-10 16:00",
+		"arrival": "2019-04-10 19:50",
+		"by": "Brussels Airlines"
+	},
+	{
+		"id": "LY 325",
+		"from": "Tel-Aviv",
+		"to": "Paris",
+		"departure": "2019-04-10 11:15",
+		"arrival": "2019-04-10 15:20",
+		"by": "El Al"
+	},
+	{
+		"id": "AF 1621",
+		"from": "Tel-Aviv",
+		"to": "Paris",
+		"departure": "2019-04-10 11:15",
+		"arrival": "2019-04-10 15:20",
+		"by": "Air France"
+	},
+	{
+		"id": "BA 164",
+		"from": "Tel-Aviv",
+		"to": "London",
+		"departure": "2019-04-10 10:50",
+		"arrival": "2019-04-10 15:00",
+		"by": "British Airways"
+	},
+	{
+		"id": "LH 687",
+		"from": "Tel-Aviv",
+		"to": "Frankfurt",
+		"departure": "2019-04-10 18:00",
+		"arrival": "2019-04-10 22:10",
+		"by": "Lufthansa"
+	}
+]

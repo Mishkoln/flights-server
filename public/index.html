@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Flights Timetable</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        body {
+            background-color: #FFF;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #469095;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        h1 {
+            color: #FFF;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        .container {
+            position: relative;
+            max-width: 95vw;
+            top: 80px;
+            text-align: center;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rowheaders,
+        .rows {
+            display: flex;
+        }
+
+        .cell {
+            flex: 1;
+            padding: 5px;
+            line-height: 160%;
+            vertical-align: middle;
+            border: 1px solid #469095;
+            margin-left: -1px;
+            margin-bottom: -1px;
+        }
+
+        .double {
+            flex-grow: 2;
+        }
+
+        .rowheader {
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #9ef1dc;
+        }
+
+        button.rowheader {
+            text-decoration: underline;
+        }
+
+        button.rowheader:hover {
+            text-decoration: none;
+            color: #fff;
+            background-color: #469095;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="index.js" type="text/javascript"></script>
+    <header>
+        <h1>Flights Timetable</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="rowheaders">
+                <div id="id" class="cell rowheader">Flight No.</div>
+                <div id="from" class="cell double rowheader">From</div>
+                <div id="to" class="cell double rowheader">To</div>
+                <button id="departure" class="cell rowheader">Departure</button>
+                <button id="arrival" class="cell rowheader">Arrival</button>
+                <div id="airline" class="cell double rowheader">Airline</div>
+            </div>
+            <div class="content"></div>
+        </div>
+    </main>
+</body>
+
+</html>
