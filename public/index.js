@@ -13,7 +13,23 @@ class Flight {
 
 const timetable = [];
 
-window.onload = getFlights();
+window.onload = function() {
+	getFlights();
+
+	// handle sort by on button click
+	let departureOrder = -1;
+	let arrivalOrder = -1;
+	const departureBtn = document.querySelector('#departure');
+	const arrivalBtn = document.querySelector('#arrival');
+	departureBtn.onclick = function() {
+		timetable.sort(sortFlights('departure', departureOrder *= -1));
+		showFlights();
+	};
+	arrivalBtn.onclick = function() {
+		timetable.sort(sortFlights('arrival', arrivalOrder *= -1));
+		showFlights();
+	};
+} 
 
 function getFlights() {
 	fetch('flights.json')
@@ -53,6 +69,13 @@ function showFlights() {
 
 	// display
 	content.innerHTML = rowsHtml;
+}
+
+function sortFlights(field, order) {
+	return function (a,b) {
+		var result = (a[field] < b[field]) ? -1 : (a[field] > b[field]) ? 1 : 0;
+		return result * order;
+	}
 }
 
 
