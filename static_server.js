@@ -12,15 +12,13 @@ contentTypes.set('json', 'application/json');
 
 function filterFlight(data, queryData) {
     const dataJson = JSON.parse(data);
-    console.log('queryData.to', queryData.to)
-    const desFilter = dataJson.filter(flight => flight.to === queryData.to);
-    console.log('desFilter', desFilter)
-    // to = paris
-    // dataJson.forEach(element => {
-
-    // });
-    
-    // return JSON.stringify(dataJson);
+    let desFilter;
+    if (Object.keys(queryData)[0] === 'to') {
+        desFilter = dataJson.filter(flight => flight.to.toLowerCase() === queryData.to.toLowerCase());
+    }
+    if (Object.keys(queryData)[0] === 'by') {
+        desFilter = dataJson.filter(flight => flight.by.toLowerCase() === queryData.by.toLowerCase());
+    }
     return JSON.stringify(desFilter);
 }
 

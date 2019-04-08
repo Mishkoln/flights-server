@@ -10,13 +10,50 @@ class Flight {
 		this.airline = data.by;
 	}
 }
+let flightsFilter = 'flights.json';
+let timetable = [];
 
-const timetable = [];
+window.onload = function() {
+	getFlights();
 
-window.onload = getFlights();
+	// handle sort by on button click
+	let departureOrder = -1;
+	let arrivalOrder = -1;
+	
+	const departureBtn = document.querySelector('#departure');
+	const arrivalBtn = document.querySelector('#arrival');
+	const filterBtn = document.querySelector('#filterBtn');
+	departureBtn.onclick = function() {
+		timetable.sort(sortFlights('departure', departureOrder *= -1));
+		showFlights();
+	};
+	arrivalBtn.onclick = function() {
+		timetable.sort(sortFlights('arrival', arrivalOrder *= -1));
+		showFlights();
+	};
+	filterBtn.onclick = function() {
+		let filterQuery = document.getElementById('filterQuery').value;
+		let filter = document.getElementById('filter');
+		let userFilter = filter.options[filter.selectedIndex].value;
+		switch (userFilter) {
+			case '':
+				flightsFilter = 'flights.json';
+				break;
+			case 'to':
+				flightsFilter += '?to=' + filterQuery;
+				break;
+			case 'by':
+				flightsFilter += '?by=' + filterQuery;
+				break;
+		}
+		
+		timetable = [];
+		getFlights();
+	}
+} 
 
 function getFlights() {
-	fetch('flights.json?to=Paris')
+	fetch(flightsFilter)
 		.then(res => res.json())
 		.then(flights => {
 			flights.forEach((flight) => {
@@ -53,6 +90,13 @@ function showFlights() {
 
 	// display
 	content.innerHTML = rowsHtml;
+}
+
+function sortFlights(field, order) {
+	return function (a,b) {
+		var result = (a[field] < b[field]) ? -1 : (a[field] > b[field]) ? 1 : 0;
+		return result * order;
+	}
 }
 
 
