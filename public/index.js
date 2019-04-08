@@ -16,7 +16,7 @@ const timetable = [];
 window.onload = getFlights();
 
 function getFlights() {
-	fetch('flights.json')
+	fetch('flights.json?to=Paris')
 		.then(res => res.json())
 		.then(flights => {
 			flights.forEach((flight) => {

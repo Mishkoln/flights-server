@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const url = require('url');
 const path = require('path');
+const querystring = require('querystring');
 
 const contentTypes = new Map();
 contentTypes.set('html', 'text/html');
@@ -9,13 +10,28 @@ contentTypes.set('js', 'text/javascript');
 contentTypes.set('css', 'text/css');
 contentTypes.set('json', 'application/json');
 
+function filterFlight(data, queryData) {
+    const dataJson = JSON.parse(data);
+    console.log('queryData.to', queryData.to)
+    const desFilter = dataJson.filter(flight => flight.to === queryData.to);
+    console.log('desFilter', desFilter)
+    // to = paris
+    // dataJson.forEach(element => {
+
+    // });
+    
+    // return JSON.stringify(dataJson);
+    return JSON.stringify(desFilter);
+}
 
 http.createServer(function (req, res) {
     const reqUrl = url.parse(req.url);
+    console.log('reqUrl', reqUrl)
     const fileName = reqUrl.pathname === '/' ?
 		'index.html' : path.basename(reqUrl.pathname);
     const ext = path.extname(fileName).substring(1);
     const cType = contentTypes.get(ext);
+    const queryData = querystring.parse(reqUrl.query);
 
     fs.readFile('public/' + fileName, function(err, data) {
         if(err) {
@@ -29,6 +45,9 @@ http.createServer(function (req, res) {
             }
         } else {
             res.writeHead(200, {'Content-Type': cType});
+            if (queryData !== null && Object.keys(queryData).length !== 0) {
+                data = filterFlight(data, queryData);
+            }
             res.write(data);
         }
         res.end();
