@@ -23,6 +23,7 @@ window.onload = function() {
 	const departureBtn = document.querySelector('#departure');
 	const arrivalBtn = document.querySelector('#arrival');
 	const filterBtn = document.querySelector('#filterBtn');
+
 	departureBtn.onclick = function() {
 		timetable.sort(sortFlights('departure', departureOrder *= -1));
 		showFlights();
@@ -49,7 +50,6 @@ window.onload = function() {
 		
 		timetable = [];
 		getFlights();
-	}
 } 
 
 function getFlights() {
