@@ -10,8 +10,8 @@ class Flight {
 		this.airline = data.by;
 	}
 }
-
-const timetable = [];
+let flightsFilter = 'flights.json';
+let timetable = [];
 
 window.onload = function() {
 	getFlights();
@@ -19,8 +19,11 @@ window.onload = function() {
 	// handle sort by on button click
 	let departureOrder = -1;
 	let arrivalOrder = -1;
+	
 	const departureBtn = document.querySelector('#departure');
 	const arrivalBtn = document.querySelector('#arrival');
+	const filterBtn = document.querySelector('#filterBtn');
+
 	departureBtn.onclick = function() {
 		timetable.sort(sortFlights('departure', departureOrder *= -1));
 		showFlights();
@@ -29,10 +32,28 @@ window.onload = function() {
 		timetable.sort(sortFlights('arrival', arrivalOrder *= -1));
 		showFlights();
 	};
+	filterBtn.onclick = function() {
+		let filterQuery = document.getElementById('filterQuery').value;
+		let filter = document.getElementById('filter');
+		let userFilter = filter.options[filter.selectedIndex].value;
+		switch (userFilter) {
+			case '':
+				flightsFilter = 'flights.json';
+				break;
+			case 'to':
+				flightsFilter += '?to=' + filterQuery;
+				break;
+			case 'by':
+				flightsFilter += '?by=' + filterQuery;
+				break;
+		}
+		
+		timetable = [];
+		getFlights();
 } 
 
 function getFlights() {
-	fetch('flights.json')
+	fetch(flightsFilter)
 		.then(res => res.json())
 		.then(flights => {
 			flights.forEach((flight) => {

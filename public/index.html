@@ -10,15 +10,14 @@
             background-color: #FFF;
             font-family: Arial, Helvetica, sans-serif;
             margin: 0 auto;
+            display: flex;
+            flex-flow: column;
         }
-
+        
         header {
             background-color: #469095;
-            position: fixed;
-            width: 100%;
-            z-index: 100;
         }
-
+    
         h1 {
             color: #FFF;
             font-size: 24px;
@@ -26,21 +25,31 @@
             margin: 20px;
         }
 
+        main {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+        
         .container {
-            position: relative;
+            width: 100%;
             max-width: 95vw;
-            top: 80px;
             text-align: center;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
         }
 
+        .filterBy {
+            margin: 5px;
+            flex: 0 1 95%;            
+        }
+        
         .rowheaders,
         .rows {
             display: flex;
         }
-
+        
         .cell {
             flex: 1;
             padding: 5px;
@@ -50,7 +59,7 @@
             margin-left: -1px;
             margin-bottom: -1px;
         }
-
+        
         .double {
             flex-grow: 2;
         }
@@ -79,6 +88,16 @@
         <h1>Flights Timetable</h1>
     </header>
     <main>
+        <div class="filterBy">
+            <label for="filter">Filter By:</label>
+            <select id="filter">
+                <option value="" selected></option>
+                <option value="to">Destination</option>
+                <option value="by">Airline</option>
+            </select>
+            <input type="text" id="filterQuery" class="" placeholder="Insert your query">
+            <button id="filterBtn" class="">Filter</button>
+        </div>
         <div class="container">
             <div class="rowheaders">
                 <div id="id" class="cell rowheader">Flight No.</div>
