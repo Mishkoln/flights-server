@@ -10,29 +10,32 @@ class Flight {
 		this.airline = data.by;
 	}
 }
+
 let flightsFilter = 'flights.json';
 let timetable = [];
 
-window.onload = function() {
+window.onload = function () {
 	getFlights();
 
 	// handle sort by on button click
 	let departureOrder = -1;
 	let arrivalOrder = -1;
-	
+
 	const departureBtn = document.querySelector('#departure');
 	const arrivalBtn = document.querySelector('#arrival');
 	const filterBtn = document.querySelector('#filterBtn');
 
-	departureBtn.onclick = function() {
+	departureBtn.onclick = function () {
 		timetable.sort(sortFlights('departure', departureOrder *= -1));
 		showFlights();
 	};
-	arrivalBtn.onclick = function() {
+
+	arrivalBtn.onclick = function () {
 		timetable.sort(sortFlights('arrival', arrivalOrder *= -1));
 		showFlights();
 	};
-	filterBtn.onclick = function() {
+
+	filterBtn.onclick = function () {
 		let filterQuery = document.getElementById('filterQuery').value;
 		let filter = document.getElementById('filter');
 		let userFilter = filter.options[filter.selectedIndex].value;
@@ -47,10 +50,11 @@ window.onload = function() {
 				flightsFilter += '?by=' + filterQuery;
 				break;
 		}
-		
+
 		timetable = [];
 		getFlights();
-} 
+	}
+}
 
 function getFlights() {
 	fetch(flightsFilter)
@@ -93,10 +97,9 @@ function showFlights() {
 }
 
 function sortFlights(field, order) {
-	return function (a,b) {
+	return function (a, b) {
 		var result = (a[field] < b[field]) ? -1 : (a[field] > b[field]) ? 1 : 0;
 		return result * order;
 	}
 }
-
 
